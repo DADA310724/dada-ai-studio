@@ -7,9 +7,9 @@ const starter:Message[]=[{role:"assistant",content:"স্বাগতম! আ�
 
 export default function DadaApp(){
  const [dark,setDark]=useState(true),[mode,setMode]=useState<"chat"|"code"|"research"|"image">("chat");
- const [model,setModel]=useState(MODELS[0].id),[messages,setMessages]=useState(starter),[input,setInput]=useState(""),[loading,setLoading]=useState(false);
+ const [model,setModel]=useState<string>(MODELS[0].id),[messages,setMessages]=useState(starter),[input,setInput]=useState(""),[loading,setLoading]=useState(false);
  const [file,setFile]=useState(""),end=useRef<HTMLDivElement>(null);
- useEffect(()=>document.documentElement.classList.toggle("dark",dark),[dark]);
+ useEffect(()=>{document.documentElement.classList.toggle("dark",dark)},[dark]);
  useEffect(()=>end.current?.scrollIntoView({behavior:"smooth"}),[messages]);
  const titles={chat:"AI Assistant",code:"Coding Agent",research:"Research",image:"Image Studio"};
  async function send(){
